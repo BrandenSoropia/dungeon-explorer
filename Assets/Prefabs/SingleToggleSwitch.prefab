@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8893017353794570576}
   - component: {fileID: 8893017353794570577}
   - component: {fileID: 837211317698985193}
-  - component: {fileID: 8835468846978910911}
+  - component: {fileID: 8349469852184215540}
   m_Layer: 0
-  m_Name: Switch1
+  m_Name: SingleToggleSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &8835468846978910911
+--- !u!114 &8349469852184215540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8893017353794570578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8dcfa424a6af4546b498c125e875e32, type: 3}
+  m_Script: {fileID: 11500000, guid: 959260f2e6f034f57bed25546e6050af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlledObject: {fileID: 0}
+  pressedSprite: {fileID: 0}
+  unpressedSprite: {fileID: 0}
