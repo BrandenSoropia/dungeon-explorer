@@ -13,9 +13,11 @@
 
 # Assets:
 
-> Don't forget to:
+https://0x72.itch.io/dungeontileset-ii
+
+> For the above link, don't forget to:
 >
 > 1.  All tile dimensions are 16 x 16
 > 2.  Set each asset's "pixel per unit" to 16
 
-https://0x72.itch.io/dungeontileset-ii
+https://robotkocka.itch.io/pixel-key-for-games
