@@ -2053,6 +2053,7 @@ GameObject:
   - component: {fileID: 561765988}
   - component: {fileID: 561765989}
   - component: {fileID: 561765990}
+  - component: {fileID: 561765991}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2185,6 +2186,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9375, y: 1.25}
   m_EdgeRadius: 0
+--- !u!114 &561765991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561765985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &693507787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6215,9 +6228,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1278542458}
   - component: {fileID: 1278542457}
+  - component: {fileID: 1278542459}
+  - component: {fileID: 1278542461}
+  - component: {fileID: 1278542460}
+  - component: {fileID: 1278542462}
   m_Layer: 0
-  m_Name: key
-  m_TagString: Untagged
+  m_Name: Key
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6261,7 +6278,7 @@ SpriteRenderer:
   m_SortingLayerID: -1607886009
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39a3e37884f9d4102bca5d57bb621339, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6269,7 +6286,7 @@ SpriteRenderer:
   m_Size: {x: 0.36, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1278542458
@@ -6286,6 +6303,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1278542459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278542456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c86656711ed94b6da7117d642fda22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1278542460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278542456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aee8461d3e51409f81a3020686e56cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1278542461
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278542456}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.08, y: 0, z: 0.07, w: 0.089999996}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.36, y: 0.64}
+    newSize: {x: 0.36, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.36, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!114 &1278542462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278542456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a596ed23e999547ca89a15da706bd390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: KEY
+  name: Green Door Key
+  sprite: {fileID: 21300000, guid: 39a3e37884f9d4102bca5d57bb621339, type: 3}
 --- !u!1 &1535186602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 249383415973522929, guid: 9c0475948378d4061b63be8f378f6d5e,
@@ -6499,6 +6581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red Switch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893017353794570578, guid: d60f8414c331c46dbbc030ded9cbad66,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60f8414c331c46dbbc030ded9cbad66, type: 3}

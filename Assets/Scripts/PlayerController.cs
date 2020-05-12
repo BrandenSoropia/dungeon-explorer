@@ -8,11 +8,26 @@ public class PlayerController : MonoBehaviour
   public float speed = 10;
   private Rigidbody2D rb2d;
 
-  public List inventory = new List();
+  private List<Dictionary<string, string>> inventory = new List<Dictionary<string, string>>();
 
   void Start()
   {
     rb2d = GetComponent<Rigidbody2D>();
+  }
+
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.I))
+    {
+      // Temp show inventory
+      foreach (Dictionary<string, string> item in inventory)
+      {
+        foreach (KeyValuePair<string, string> kvp in item)
+        {
+          Debug.Log("Key = " + kvp.Key + " Value = " + kvp.Value);
+        }
+      }
+    }
   }
 
   void FixedUpdate()
@@ -24,21 +39,10 @@ public class PlayerController : MonoBehaviour
     rb2d.AddForce(movement * speed);
   }
 
-  void OnTriggerEnter2D(Collider2D other)
+  public void AddToInventory(Dictionary<string, string> item)
   {
-    if (!isPressed && other.gameObject.CompareTag("Player"))
-    {
-
-      isPressed = !isPressed;
-      GetComponent<SpriteRenderer>().sprite = isPressed ? pressedSprite : unpressedSprite;
-
-      // TODO: A generic class to controll doors to make this more flexible!!!
-      controlledObject.GetComponent<DoorController>().ToggleState();
-    }
-    else if (other.gameObject.CompareTag("PickUp"))
-    {
-      // TODO: Figure out how to instatiate pickup for key
-      other.gameObject.SetActive(false);
-    }
+    Debug.Log("Inventory before: " + inventory.ToString());
+    inventory.Add(item);
+    Debug.Log("Inventory after: " + inventory.ToString());
   }
 }
