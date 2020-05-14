@@ -2053,7 +2053,6 @@ GameObject:
   - component: {fileID: 561765988}
   - component: {fileID: 561765989}
   - component: {fileID: 561765990}
-  - component: {fileID: 561765991}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2186,18 +2185,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9375, y: 1.25}
   m_EdgeRadius: 0
---- !u!114 &561765991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561765985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &693507787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6228,9 +6215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1278542458}
   - component: {fileID: 1278542457}
-  - component: {fileID: 1278542459}
   - component: {fileID: 1278542461}
-  - component: {fileID: 1278542460}
   - component: {fileID: 1278542462}
   m_Layer: 0
   m_Name: Key
@@ -6303,30 +6288,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1278542459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278542456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c86656711ed94b6da7117d642fda22d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1278542460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278542456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aee8461d3e51409f81a3020686e56cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1278542461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6351,7 +6312,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.64}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1278542462
 MonoBehaviour:
@@ -6365,8 +6326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a596ed23e999547ca89a15da706bd390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: KEY
-  name: Green Door Key
+  name: green_door_key
   sprite: {fileID: 21300000, guid: 39a3e37884f9d4102bca5d57bb621339, type: 3}
 --- !u!1 &1535186602 stripped
 GameObject:

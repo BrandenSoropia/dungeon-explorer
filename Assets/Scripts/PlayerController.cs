@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
   public float speed = 10;
   private Rigidbody2D rb2d;
 
-  private List<Dictionary<string, string>> inventory = new List<Dictionary<string, string>>();
+  private List<PickUp> inventory = new List<PickUp>();
 
   void Start()
   {
@@ -19,14 +19,7 @@ public class PlayerController : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.I))
     {
-      // Temp show inventory
-      foreach (Dictionary<string, string> item in inventory)
-      {
-        foreach (KeyValuePair<string, string> kvp in item)
-        {
-          Debug.Log("Key = " + kvp.Key + " Value = " + kvp.Value);
-        }
-      }
+      PrintInventory();
     }
   }
 
@@ -39,10 +32,37 @@ public class PlayerController : MonoBehaviour
     rb2d.AddForce(movement * speed);
   }
 
-  public void AddToInventory(Dictionary<string, string> item)
+  void OnTriggerStay2D(Collider2D other)
   {
-    Debug.Log("Inventory before: " + inventory.ToString());
+    if (other.gameObject.CompareTag("PickUp") && Input.GetKeyDown(KeyCode.E))
+    {
+      PickUpController pickUpController = other.gameObject.GetComponent<PickUpController>();
+
+      AddToInventory(pickUpController.pickUp);
+      pickUpController.HandlePickUp();
+    }
+  }
+
+  public void AddToInventory(PickUp item)
+  {
     inventory.Add(item);
-    Debug.Log("Inventory after: " + inventory.ToString());
+    PrintInventory();
+  }
+
+  void PrintInventory()
+  {
+    if (inventory.Count != 0)
+    {
+      Debug.Log("Inventory:");
+
+      foreach (PickUp item in inventory)
+      {
+        Debug.Log(item);
+      }
+    }
+    else
+    {
+      Debug.Log("Inventory Empty!");
+    }
   }
 }

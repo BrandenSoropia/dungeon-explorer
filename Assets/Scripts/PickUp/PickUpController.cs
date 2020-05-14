@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class PickUpController : MonoBehaviour
 {
-  public string type = PickUpConstants.TYPE_KEY;
+  public PickUp pickUp;
+
   public string name;
   public Sprite sprite;
 
   void Start()
   {
+    pickUp = new PickUp(PickUpConstants.TYPE_KEY, name);
     GetComponent<SpriteRenderer>().sprite = sprite;
   }
 
-  void OnTriggerEnter2D(Collider2D other)
+  public void HandlePickUp()
   {
-    Debug.Log("Colliding!");
-
-    // TODO: Only trigger on "interact" key pressed. Input system???
-    if (other.gameObject.CompareTag("Player"))
-    {
-      Debug.Log("Colliding with player, deactivating!");
-      gameObject.SetActive(false);
-
-      other.gameObject.GetComponent<PlayerController>().AddToInventory(new Dictionary<string, string>{
-        { type, name }
-      });
-    }
+    gameObject.SetActive(false);
+    Debug.Log("Picked up!");
   }
 }
