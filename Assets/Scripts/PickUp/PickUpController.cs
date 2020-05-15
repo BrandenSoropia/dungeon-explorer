@@ -8,10 +8,11 @@ public class PickUpController : MonoBehaviour
 
   public string pickUpName;
   public Sprite sprite;
+  public int pickUpId;
 
   void Start()
   {
-    pickUp = new PickUp(PickUpConstants.TYPE_KEY, pickUpName);
+    pickUp = new PickUp(PickUpConstants.TYPE_KEY, pickUpName, pickUpId);
     GetComponent<SpriteRenderer>().sprite = sprite;
   }
 

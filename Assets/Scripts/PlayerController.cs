@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
   public float speed = 10;
   private Rigidbody2D rb2d;
 
-  private List<PickUp> inventory = new List<PickUp>();
+  private Dictionary<string, List<PickUp>> inventory = new Dictionary<string, List<PickUp>>();
 
   void Start()
   {
@@ -34,19 +34,53 @@ public class PlayerController : MonoBehaviour
 
   void OnTriggerStay2D(Collider2D other)
   {
-    if (other.gameObject.CompareTag("PickUp") && Input.GetKeyDown(KeyCode.E))
+    if (other.gameObject.CompareTag(Tags.PICKUP) && Input.GetKeyDown(KeyCode.E))
     {
       PickUpController pickUpController = other.gameObject.GetComponent<PickUpController>();
 
       AddToInventory(pickUpController.pickUp);
       pickUpController.HandlePickUp();
     }
+    else if (other.gameObject.CompareTag(Tags.DOOR) && Input.GetKeyDown(KeyCode.E))
+    {
+      DoorController doorController = other.gameObject.GetComponent<DoorController>();
+
+      PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.OpenWithKeyName);
+
+      if (requiredKey != null)
+      {
+        doorController.ToggleState();
+        bool result = RemoveFromInventory(requiredKey);
+
+        if (!result)
+        {
+          Debug.Log("There was an error trying to remove the required key from inventory.");
+        }
+      }
+
+    }
+  }
+
+  private PickUp FindInInventory(string category, string name)
+  {
+    return inventory[category].Find(item => item.Name == name);
   }
 
   public void AddToInventory(PickUp item)
   {
-    inventory.Add(item);
+    if (!inventory.ContainsKey(item.Type))
+    {
+      inventory.Add(item.Type, new List<PickUp>());
+    }
+
+    inventory[item.Type].Add(item);
+
     PrintInventory();
+  }
+
+  public bool RemoveFromInventory(PickUp item)
+  {
+    return inventory[item.Type].Remove(item);
   }
 
   void PrintInventory()
@@ -55,9 +89,14 @@ public class PlayerController : MonoBehaviour
     {
       Debug.Log("Inventory:");
 
-      foreach (PickUp item in inventory)
+      foreach (KeyValuePair<string, List<PickUp>> category in inventory)
       {
-        Debug.Log(item);
+        Debug.Log($"Section: \"{category.Key}\"");
+
+        foreach (PickUp item in category.Value)
+        {
+          Debug.Log(item);
+        }
       }
     }
     else
