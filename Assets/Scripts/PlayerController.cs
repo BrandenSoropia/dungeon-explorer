@@ -38,10 +38,10 @@ public class PlayerController : MonoBehaviour
     {
       HandlePickUpInteraction(other);
     }
-    else if (other.gameObject.CompareTag(Tags.DOOR) && Input.GetKeyDown(KeyCode.E))
+    else if (other.gameObject.CompareTag(Tags.INTERACTION_AREA) && Input.GetKeyDown(KeyCode.E))
     {
-      Debug.Log("Colliding with door!");
-      HandleDoorInteraction(other);
+      Debug.Log("Interacting with door!");
+      HandleDoorAreaInteraction(other);
     }
   }
 
@@ -53,32 +53,46 @@ public class PlayerController : MonoBehaviour
     pickUpController.HandlePickUp();
   }
 
-  private void HandleDoorInteraction(Collider2D other)
+  private void HandleDoorAreaInteraction(Collider2D interactiveArea)
   {
-    DoorController doorController = other.gameObject.GetComponent<DoorController>();
-
-    PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.openWithKeyName);
-    Debug.Log($"Player has required key? {requiredKey}");
-
-    if (requiredKey != null)
+    DoorController doorController = interactiveArea.gameObject.GetComponentInParent<DoorController>();
+    if (doorController.openWithKeyName != "")
     {
-      doorController.ToggleState();
-      bool result = RemoveFromInventory(requiredKey);
+      PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.openWithKeyName);
 
-      if (!result)
+      if (requiredKey != null)
       {
-        Debug.Log("There was an error trying to remove the required key from inventory.");
+        doorController.ToggleState();
+        bool result = RemoveFromInventory(requiredKey);
+
+        if (!result)
+        {
+          Debug.Log("There was an error trying to remove the required key from inventory.");
+        }
+      }
+      else
+      {
+        Debug.Log("Doesn't have the right key!");
       }
     }
     else
     {
-      Debug.Log("Doesn't have the right key!");
+      Debug.Log("The door doesn't use a key!");
     }
   }
 
   private PickUp FindInInventory(string category, string name)
   {
-    return inventory[category].Find(item => item.Name == name);
+    List<PickUp> items = new List<PickUp>();
+
+    if (inventory.TryGetValue(category, out items))
+    {
+      return items.Find(item => item.Name == name);
+    }
+    else
+    {
+      return null;
+    }
   }
 
   public void AddToInventory(PickUp item)
