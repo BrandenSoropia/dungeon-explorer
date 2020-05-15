@@ -36,28 +36,43 @@ public class PlayerController : MonoBehaviour
   {
     if (other.gameObject.CompareTag(Tags.PICKUP) && Input.GetKeyDown(KeyCode.E))
     {
-      PickUpController pickUpController = other.gameObject.GetComponent<PickUpController>();
-
-      AddToInventory(pickUpController.pickUp);
-      pickUpController.HandlePickUp();
+      HandlePickUpInteraction(other);
     }
     else if (other.gameObject.CompareTag(Tags.DOOR) && Input.GetKeyDown(KeyCode.E))
     {
-      DoorController doorController = other.gameObject.GetComponent<DoorController>();
+      Debug.Log("Colliding with door!");
+      HandleDoorInteraction(other);
+    }
+  }
 
-      PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.OpenWithKeyName);
+  private void HandlePickUpInteraction(Collider2D other)
+  {
+    PickUpController pickUpController = other.gameObject.GetComponent<PickUpController>();
 
-      if (requiredKey != null)
+    AddToInventory(pickUpController.pickUp);
+    pickUpController.HandlePickUp();
+  }
+
+  private void HandleDoorInteraction(Collider2D other)
+  {
+    DoorController doorController = other.gameObject.GetComponent<DoorController>();
+
+    PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.openWithKeyName);
+    Debug.Log($"Player has required key? {requiredKey}");
+
+    if (requiredKey != null)
+    {
+      doorController.ToggleState();
+      bool result = RemoveFromInventory(requiredKey);
+
+      if (!result)
       {
-        doorController.ToggleState();
-        bool result = RemoveFromInventory(requiredKey);
-
-        if (!result)
-        {
-          Debug.Log("There was an error trying to remove the required key from inventory.");
-        }
+        Debug.Log("There was an error trying to remove the required key from inventory.");
       }
-
+    }
+    else
+    {
+      Debug.Log("Doesn't have the right key!");
     }
   }
 

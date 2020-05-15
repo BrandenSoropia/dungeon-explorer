@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
   public bool isOpen = false;
   public Sprite closedSprite;
   public Sprite openSprite;
-  public string OpenWithKeyName { get; set; }
+  public string openWithKeyName;
 
   void Start()
   {
