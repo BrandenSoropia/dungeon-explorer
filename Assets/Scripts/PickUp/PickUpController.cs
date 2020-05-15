@@ -6,12 +6,12 @@ public class PickUpController : MonoBehaviour
 {
   public PickUp pickUp;
 
-  public string name;
+  public string pickUpName;
   public Sprite sprite;
 
   void Start()
   {
-    pickUp = new PickUp(PickUpConstants.TYPE_KEY, name);
+    pickUp = new PickUp(PickUpConstants.TYPE_KEY, pickUpName);
     GetComponent<SpriteRenderer>().sprite = sprite;
   }
 

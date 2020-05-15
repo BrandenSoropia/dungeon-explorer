@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUp
+  - Door
+  - Switch
   layers:
   - Default
   - TransparentFX

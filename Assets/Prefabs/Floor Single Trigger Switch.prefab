@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8893017353794570576}
   - component: {fileID: 8893017353794570577}
   - component: {fileID: 837211317698985193}
-  - component: {fileID: 8349469852184215540}
+  - component: {fileID: 8703684329808300946}
   m_Layer: 0
-  m_Name: SingleToggleSwitch
-  m_TagString: Untagged
+  m_Name: Floor Single Trigger Switch
+  m_TagString: Switch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
---- !u!114 &8349469852184215540
+--- !u!114 &8703684329808300946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,9 +119,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8893017353794570578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959260f2e6f034f57bed25546e6050af, type: 3}
+  m_Script: {fileID: 11500000, guid: 97d8d8ab031dc4921a5e12b8c0e0eff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlledObject: {fileID: 0}
-  pressedSprite: {fileID: 0}
-  unpressedSprite: {fileID: 0}
+  controlledDevice: {fileID: 0}
+  activeSprite: {fileID: 3872099523793418888, guid: 031d6241d92004f71af9efd50c28f0f9,
+    type: 3}
+  inActiveSprite: {fileID: -515168151182347517, guid: 031d6241d92004f71af9efd50c28f0f9,
+    type: 3}
