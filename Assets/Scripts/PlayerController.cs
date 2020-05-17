@@ -119,7 +119,15 @@ public class PlayerController : MonoBehaviour
 
   public bool RemoveFromInventory(PickUp item)
   {
-    return inventory[item.Type].Remove(item);
+    bool isSuccessful = false;
+    isSuccessful = inventory[item.Type].Remove(item);
+
+    if (inventory[item.Type].Count == 0)
+    {
+      inventory.Remove(item.Type);
+    }
+
+    return isSuccessful;
   }
 
   void PrintInventory()
