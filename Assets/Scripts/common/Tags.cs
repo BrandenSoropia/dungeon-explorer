@@ -9,4 +9,5 @@ public class Tags
   public const string DOOR = "Door";
   public const string PICKUP = "PickUp";
   public const string INTERACTION_AREA = "Interaction Area";
+  public const string DOOR_INTERACTION_AREA = "Door Interaction Area";
 }

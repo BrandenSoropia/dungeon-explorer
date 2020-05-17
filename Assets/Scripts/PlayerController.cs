@@ -38,10 +38,15 @@ public class PlayerController : MonoBehaviour
     {
       HandlePickUpInteraction(other);
     }
-    else if (other.gameObject.CompareTag(Tags.INTERACTION_AREA) && Input.GetKeyDown(KeyCode.E))
+    else if (other.gameObject.CompareTag(Tags.DOOR_INTERACTION_AREA) && Input.GetKeyDown(KeyCode.E))
     {
       Debug.Log("Interacting with door!");
       HandleDoorAreaInteraction(other);
+    }
+    else if (other.gameObject.CompareTag(Tags.INTERACTION_AREA) && Input.GetKeyDown(KeyCode.E))
+    {
+      Debug.Log("Interacting with interaction area");
+      HandleInteractionArea(other);
     }
   }
 
@@ -53,9 +58,9 @@ public class PlayerController : MonoBehaviour
     pickUpController.HandlePickUp();
   }
 
-  private void HandleDoorAreaInteraction(Collider2D interactiveArea)
+  private void HandleDoorAreaInteraction(Collider2D doorInteractiveArea)
   {
-    DoorController doorController = interactiveArea.gameObject.GetComponentInParent<DoorController>();
+    DoorController doorController = doorInteractiveArea.gameObject.GetComponentInParent<DoorController>();
     if (doorController.openWithKeyName != "")
     {
       PickUp requiredKey = FindInInventory(PickUpConstants.TYPE_KEY, doorController.openWithKeyName);
@@ -79,6 +84,11 @@ public class PlayerController : MonoBehaviour
     {
       Debug.Log("The door doesn't use a key!");
     }
+  }
+
+  private void HandleInteractionArea(Collider2D interactiveArea)
+  {
+    GameStateManager.EndGame();
   }
 
   private PickUp FindInInventory(string category, string name)

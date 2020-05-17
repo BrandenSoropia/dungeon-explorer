@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Switch
   - Interaction Area
+  - Door Interaction Area
   layers:
   - Default
   - TransparentFX

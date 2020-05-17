@@ -21,3 +21,5 @@ https://0x72.itch.io/dungeontileset-ii
 > 2.  Set each asset's "pixel per unit" to 16
 
 https://robotkocka.itch.io/pixel-key-for-games
+
+https://opengameart.org/content/magic-sprite-effects-for-ardentryst-by-jordan-trudgett
