@@ -2,6 +2,7 @@
 
 2D game where a player must solve puzzles and fight enemies to advance deeper into a dungeon filled with hidden wealth! The purpose is to fulfill a childhood dream of making a game so this'll be going through a lot of trial/error while learning!
 
+Follow the project breakdown/roadmap here: https://trello.com/invite/b/GcYUdw7H/729d6d0600e6570d9c35a41031c7d83e/dungeon-explorer
 
 May 17, 2020: Bare-bones "game" (v0) 
 Getting the basics of a game down: move player, open locked doors via switch or key, basic interactions and basic win condition of getting to the goal point!
