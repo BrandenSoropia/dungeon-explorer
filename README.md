@@ -1,6 +1,11 @@
 # dungeon-explorer
 
-2D game where a player must solve puzzles and fight enemies to advance deeper into a dungeon filled with hidden wealth!
+2D game where a player must solve puzzles and fight enemies to advance deeper into a dungeon filled with hidden wealth! The purpose is to fulfill a childhood dream of making a game so this'll be going through a lot of trial/error while learning!
+
+
+May 17, 2020: Bare-bones "game" (v0) 
+Getting the basics of a game down: move player, open locked doors via switch or key, basic interactions and basic win condition of getting to the goal point!
+![Bare-bones Dungeon Explorer](/screenshots/mvp-barebones-dungeon-explorer.gif?raw=true "Bare-bones Dungeon Explorer")
 
 # Setup:
 
